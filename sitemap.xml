@@ -3,23 +3,24 @@
 
   <!-- Homepage / QR Generator -->
   <url>
-    <loc>https://sajidsaj.github.io/qr-code-site/index.html</loc>
+    <loc>https://sajidsaj.github.io/QR-Code-Generator/index.html</loc>
     <lastmod>2025-09-21</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- About Page -->
   <url>
-    <loc>https://sajidsaj.github.io/qr-code-site/about.html</loc>
+    <loc>https://sajidsaj.github.io/QR-Code-Generator/about.html</loc>
     <lastmod>2025-09-21</lastmod>
     <priority>0.5</priority>
   </url>
 
   <!-- Instructions Page -->
   <url>
-    <loc>https://sajidsaj.github.io/qr-code-site/instructions.html</loc>
+    <loc>https://sajidsaj.github.io/QR-Code-Generator/instructions.html</loc>
     <lastmod>2025-09-21</lastmod>
     <priority>0.5</priority>
   </url>
 
 </urlset>
+
