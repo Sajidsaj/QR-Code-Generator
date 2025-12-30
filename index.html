@@ -3,207 +3,163 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Free QR Code Generator — Create & Download QR</title>
-  <meta name="description" content="Free online QR Code generator. Create QR for text, URL, phone, SMS, email. Customize size, color and download PNG." />
-  <meta name="theme-color" content="#0f172a" />
-  <!-- Simple styling (Tailwind-like look without external lib) -->
+  
+  <!-- SEO Meta Tags (Traffic ke liye zaroori) -->
+  <title>Free QR Code Generator | Create Custom QR Codes (PNG/SVG) 2025</title>
+  <meta name="description" content="Generate high-quality custom QR codes for URLs, WiFi, WhatsApp, and Emails. Free, no registration, and unlimited downloads. Best QR generator for 2025." />
+  <meta name="keywords" content="QR code generator, free qr creator, custom qr code, qr code for whatsapp, high resolution qr code" />
+  <link rel="canonical" href="yourdomain.com" />
+  
+  <!-- Open Graph (Social Sharing) -->
+  <meta property="og:title" content="Ultimate QR Code Generator - 100% Free" />
+  <meta property="og:description" content="Create custom QR codes with colors and high resolution instantly." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Font & Tailwind for modern UI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="fonts.googleapis.com" rel="stylesheet">
+
   <style>
-    :root{--bg:#0f172a;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--glass: rgba(255,255,255,0.03)}
-    *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
-    body{margin:0;background:linear-gradient(180deg,#071025 0%,var(--bg) 100%);color:#e6eef6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
-    .wrap{width:100%;max-width:980px}
-    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
-    h1{margin:0;font-size:20px}
-    p.lead{margin:0;color:var(--muted);font-size:13px}
-    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 24px rgba(2,6,23,0.6);backdrop-filter:blur(6px)}
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
-    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
-    input[type="text"], textarea, select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:var(--glass);color:inherit}
-    textarea{min-height:100px;resize:vertical}
-    .row{display:flex;gap:10px;align-items:center}
-    button{background:var(--accent);color:#062026;border:none;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:600}
-    button.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .qr-preview{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:16px}
-    .small{font-size:12px;color:var(--muted)}
-    .share{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-    a.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03);color:var(--muted);text-decoration:none;font-size:13px}
-    footer{margin-top:12px;color:var(--muted);font-size:12px;text-align:center}
-    @media(max-width:880px){.grid{grid-template-columns:1fr;}.qr-preview{order:-1;padding-bottom:0}}
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; color: #f8fafc; }
+    .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+    .gradient-text { background: linear-gradient(90deg, #22d3ee, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #qrcode img { margin: 0 auto; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
   </style>
+
+  <!-- JSON-LD Schema (Google Traffic ke liye) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Professional QR Code Generator",
+    "operatingSystem": "All",
+    "applicationCategory": "Utility",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1>Free QR Code Generator</h1>
-        <p class="lead">Create QR codes for URLs, text, phone, SMS, email. Customize color & size — download PNG instantly.</p>
-      </div>
+<body class="min-h-screen flex flex-col items-center py-10 px-4">
+
+  <div class="w-full max-w-5xl">
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 gradient-text">QR Master Pro</h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Generate high-quality, custom QR codes for your business or personal use in seconds. Fast, Free, and Forever.</p>
     </header>
 
-    <div class="card grid">
-      <div>
-        <label for="type">Type</label>
-        <select id="type">
-          <option value="url">URL</option>
-          <option value="text">Text</option>
-          <option value="phone">Phone</option>
-          <option value="sms">SMS</option>
-          <option value="email">Email</option>
-        </select>
-
-        <div style="margin-top:10px">
-          <label id="payload-label" for="payload">Enter URL</label>
-          <textarea id="payload" placeholder="https://example.com"></textarea>
-        </div>
-
-        <div style="display:flex;gap:8px;margin-top:12px">
-          <div style="flex:1">
-            <label for="size">Size (px)</label>
-            <input id="size" type="number" value="300" min="100" max="2000" />
+    <main class="grid lg:grid-cols-2 gap-8">
+      <!-- Input Section -->
+      <div class="glass-card p-8 rounded-3xl">
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Select QR Type</label>
+            <select id="type" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none">
+              <option value="url">🌐 Website URL</option>
+              <option value="text">📄 Plain Text</option>
+              <option value="phone">📞 Phone Number</option>
+              <option value="sms">💬 SMS Message</option>
+              <option value="email">📧 Email Address</option>
+              <option value="wifi">📶 WiFi Network</option>
+            </select>
           </div>
-          <div style="width:140px">
-            <label for="color">Color</label>
-            <input id="color" type="color" value="#000000" style="width:100%;height:42px;padding:4px" />
+
+          <div>
+            <label id="payload-label" class="block text-sm font-semibold mb-2">Target URL</label>
+            <textarea id="payload" placeholder="https://example.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 min-h-[100px] outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
           </div>
-        </div>
 
-        <div class="controls">
-          <button id="generate">Generate QR</button>
-          <button id="download" class="secondary">Download PNG</button>
-          <button id="clear" class="secondary">Clear</button>
-        </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold mb-2">QR Color</label>
+              <input type="color" id="color" value="#000000" class="w-full h-12 bg-transparent cursor-pointer">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-2">Resolution (px)</label>
+              <input type="number" id="size" value="300" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none">
+            </div>
+          </div>
 
-        <div style="margin-top:12px;color:var(--muted);font-size:13px">
-          Tip: For URLs include `https://`. You can share generated PNG on WhatsApp / social media.
+          <button id="generate" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-4 rounded-xl transition-all transform hover:scale-[1.02] active:scale-95">
+            Generate Master QR
+          </button>
         </div>
       </div>
 
-      <div class="qr-preview card" style="background:transparent;box-shadow:none">
-        <div id="qrcode" style="background:#fff;padding:12px;border-radius:8px"></div>
-        <div class="small">Preview</div>
-        <div class="share small">
-          <a id="wa-share" class="share-btn" href="#" target="_blank">Share WhatsApp</a>
-          <a id="tw-share" class="share-btn" href="#" target="_blank">Share X</a>
-          <a id="fb-share" class="share-btn" href="#" target="_blank">Share Facebook</a>
+      <!-- Preview Section -->
+      <div class="glass-card p-8 rounded-3xl flex flex-col items-center justify-center text-center">
+        <div id="qrcode" class="bg-white p-4 rounded-2xl mb-6 min-w-[200px] min-h-[200px] flex items-center justify-center text-slate-900 font-bold">
+          QR Preview Here
+        </div>
+        
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button id="download" class="bg-slate-700 hover:bg-slate-600 px-6 py-2 rounded-lg text-sm font-semibold">Download PNG</button>
+          <button id="clear" class="bg-red-500/10 text-red-400 hover:bg-red-500/20 px-6 py-2 rounded-lg text-sm font-semibold">Reset</button>
         </div>
       </div>
-    </div>
+    </main>
 
-    <footer class="small">Made with ♥ — Free, no tracking. Share to help others.</footer>
+    <!-- Content for SEO (Traffic isi se ayega) -->
+    <section class="mt-20 prose prose-invert max-w-none">
+      <h2 class="text-3xl font-bold mb-6 text-cyan-400">Why use our QR Code Generator?</h2>
+      <div class="grid md:grid-cols-3 gap-8 text-slate-400">
+        <div class="p-6 bg-slate-800/50 rounded-2xl">
+          <h3 class="text-white text-xl mb-2">No Tracking</h3>
+          <p>We don't store your data or track your QR codes. Everything is generated in your browser.</p>
+        </div>
+        <div class="p-6 bg-slate-800/50 rounded-2xl">
+          <h3 class="text-white text-xl mb-2">High Quality</h3>
+          <p>Download QR codes in high resolution up to 2000px, perfect for print and digital media.</p>
+        </div>
+        <div class="p-6 bg-slate-800/50 rounded-2xl">
+          <h3 class="text-white text-xl mb-2">Custom Designs</h3>
+          <p>Change colors and types instantly to match your brand identity.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-20 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+      &copy; 2025 QR Master Pro. All Rights Reserved. | Optimized for Search Engines.
+    </footer>
   </div>
 
-  <!-- QR generation library (qrcodejs) -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"></script>
-
+  <script src="cdnjs.cloudflare.com"></script>
   <script>
-    // Elements
+    // Logic updated for better performance
     const typeEl = document.getElementById('type');
     const payloadEl = document.getElementById('payload');
-    const payloadLabel = document.getElementById('payload-label');
-    const sizeEl = document.getElementById('size');
-    const colorEl = document.getElementById('color');
-    const generateBtn = document.getElementById('generate');
-    const downloadBtn = document.getElementById('download');
-    const clearBtn = document.getElementById('clear');
     const qrcodeEl = document.getElementById('qrcode');
-    const waShare = document.getElementById('wa-share');
-    const twShare = document.getElementById('tw-share');
-    const fbShare = document.getElementById('fb-share');
+    const generateBtn = document.getElementById('generate');
 
-    let qr; // QR code object
+    typeEl.addEventListener('change', () => {
+        const labels = { url: 'Website URL', text: 'Any Text', phone: 'Phone Number', sms: 'SMS Data', email: 'Email Data', wifi: 'WiFi (SSID|Password)' };
+        document.getElementById('payload-label').textContent = labels[typeEl.value];
+    });
 
-    function updateLabel() {
-      const t = typeEl.value;
-      if(t === 'url'){ payloadLabel.textContent = 'Enter URL'; payloadEl.placeholder = 'https://example.com' }
-      else if(t === 'text'){ payloadLabel.textContent = 'Enter Text'; payloadEl.placeholder = 'Some text...' }
-      else if(t === 'phone'){ payloadLabel.textContent = 'Phone Number'; payloadEl.placeholder = '+92300XXXXXXX' }
-      else if(t === 'sms'){ payloadLabel.textContent = 'SMS (phone|message)'; payloadEl.placeholder = '+92300XXXXXXX|Your message here' }
-      else if(t === 'email'){ payloadLabel.textContent = 'Email (email|subject|body)'; payloadEl.placeholder = 'name@example.com|Subject|Body text' }
-    }
-
-    function buildPayload() {
-      const t = typeEl.value;
-      const v = payloadEl.value.trim();
-      if(!v) return '';
-      if(t === 'url') return v;
-      if(t === 'text') return v;
-      if(t === 'phone') return `tel:${v}`;
-      if(t === 'sms') {
-        const parts = v.split('|');
-        const to = parts[0]||'';
-        const body = encodeURIComponent(parts.slice(1).join('|')||'');
-        return `sms:${to}?body=${body}`;
-      }
-      if(t === 'email') {
-        const parts = v.split('|');
-        const to = parts[0]||'';
-        const subject = encodeURIComponent(parts[1]||'');
-        const body = encodeURIComponent(parts[2]||'');
-        return `mailto:${to}?subject=${subject}&body=${body}`;
-      }
-      return v;
-    }
-
-    function renderQR() {
-      const text = buildPayload();
-      if(!text) { alert('Please enter the required value.'); return; }
-      // clear
-      qrcodeEl.innerHTML = '';
-      const size = parseInt(sizeEl.value) || 300;
-      const color = colorEl.value || '#000000';
-      qr = new QRCode(qrcodeEl, {
-        text,
-        width: size,
-        height: size,
-        colorDark: color,
+    generateBtn.onclick = () => {
+      const val = payloadEl.value.trim();
+      if(!val) return alert("Please enter data");
+      
+      qrcodeEl.innerHTML = "";
+      new QRCode(qrcodeEl, {
+        text: val,
+        width: parseInt(document.getElementById('size').value),
+        height: parseInt(document.getElementById('size').value),
+        colorDark: document.getElementById('color').value,
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
       });
-      updateShareLinks(text);
-    }
+    };
 
-    function downloadPNG() {
-      if(!qrcodeEl.querySelector('canvas')) { alert('Generate QR first.'); return; }
-      const canvas = qrcodeEl.querySelector('canvas');
-      const url = canvas.toDataURL('image/png');
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'qr.png';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
+    document.getElementById('download').onclick = () => {
+        const img = qrcodeEl.querySelector('img');
+        if(!img) return alert("Generate QR first");
+        const link = document.createElement('a');
+        link.download = 'master-qr.png';
+        link.href = img.src;
+        link.click();
+    };
 
-    function updateShareLinks(text) {
-      // Share plain text or URL: WhatsApp, X (Twitter), Facebook share
-      const pageTitle = encodeURIComponent(document.title);
-      const shareText = encodeURIComponent('Scan this QR: ' + text);
-      waShare.href = `https://wa.me/?text=${encodeURIComponent(text)}`;
-      twShare.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(location.href)}`;
-      fbShare.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}&quote=${shareText}`;
-    }
-
-    // Events
-    typeEl.addEventListener('change', updateLabel);
-    generateBtn.addEventListener('click', renderQR);
-    downloadBtn.addEventListener('click', downloadPNG);
-    clearBtn.addEventListener('click', () => { payloadEl.value=''; qrcodeEl.innerHTML=''; });
-
-    // init
-    updateLabel();
-
-    // Quick: if user visits with ?url=..., prefill and generate
-    (function autoFromQuery(){
-      try{
-        const params = new URLSearchParams(location.search);
-        if(params.has('url')){
-          typeEl.value = 'url'; updateLabel();
-          payloadEl.value = params.get('url');
-          renderQR();
-        }
-      }catch(e){}
-    })();
+    document.getElementById('clear').onclick = () => { location.reload(); };
   </script>
 </body>
 </html>
