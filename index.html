@@ -1,165 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  
-  <!-- SEO Meta Tags (Traffic ke liye zaroori) -->
-  <title>Free QR Code Generator | Create Custom QR Codes (PNG/SVG) 2025</title>
-  <meta name="description" content="Generate high-quality custom QR codes for URLs, WiFi, WhatsApp, and Emails. Free, no registration, and unlimited downloads. Best QR generator for 2025." />
-  <meta name="keywords" content="QR code generator, free qr creator, custom qr code, qr code for whatsapp, high resolution qr code" />
-  <link rel="canonical" href="yourdomain.com" />
-  
-  <!-- Open Graph (Social Sharing) -->
-  <meta property="og:title" content="Ultimate QR Code Generator - 100% Free" />
-  <meta property="og:description" content="Create custom QR codes with colors and high resolution instantly." />
-  <meta property="og:type" content="website" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font & Tailwind for modern UI -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="fonts.googleapis.com" rel="stylesheet">
+<title>Free QR Code Generator Online | QR Master Pro 2025</title>
+<meta name="description" content="Generate QR codes online for free. Create QR codes for URLs, text and more. Download high quality QR codes instantly.">
 
-  <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; color: #f8fafc; }
-    .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-    .gradient-text { background: linear-gradient(90deg, #22d3ee, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    #qrcode img { margin: 0 auto; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
-  </style>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- JSON-LD Schema (Google Traffic ke liye) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Professional QR Code Generator",
-    "operatingSystem": "All",
-    "applicationCategory": "Utility",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+<!-- ✅ WORKING QR CODE LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+
+<style>
+body { background:#030712; color:#f8fafc; font-family:Inter,system-ui }
+.glass-ui{background:rgba(30,41,59,.5);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1)}
+#qrOutput canvas{margin:auto;border-radius:16px;box-shadow:0 25px 50px -12px rgba(0,0,0,.6)}
+</style>
 </head>
-<body class="min-h-screen flex flex-col items-center py-10 px-4">
 
-  <div class="w-full max-w-5xl">
-    <!-- Header -->
-    <header class="text-center mb-12">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 gradient-text">QR Master Pro</h1>
-      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Generate high-quality, custom QR codes for your business or personal use in seconds. Fast, Free, and Forever.</p>
-    </header>
+<body class="min-h-screen py-12 px-4">
 
-    <main class="grid lg:grid-cols-2 gap-8">
-      <!-- Input Section -->
-      <div class="glass-card p-8 rounded-3xl">
-        <div class="space-y-6">
-          <div>
-            <label class="block text-sm font-semibold mb-2">Select QR Type</label>
-            <select id="type" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none">
-              <option value="url">🌐 Website URL</option>
-              <option value="text">📄 Plain Text</option>
-              <option value="phone">📞 Phone Number</option>
-              <option value="sms">💬 SMS Message</option>
-              <option value="email">📧 Email Address</option>
-              <option value="wifi">📶 WiFi Network</option>
-            </select>
-          </div>
+<div class="max-w-5xl mx-auto">
 
-          <div>
-            <label id="payload-label" class="block text-sm font-semibold mb-2">Target URL</label>
-            <textarea id="payload" placeholder="https://example.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 min-h-[100px] outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
-          </div>
+<header class="text-center mb-16">
+<h1 class="text-5xl font-black bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+Free QR Code Generator
+</h1>
+<p class="text-slate-400 mt-4">Unlimited • No Signup • High Quality</p>
+</header>
 
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-semibold mb-2">QR Color</label>
-              <input type="color" id="color" value="#000000" class="w-full h-12 bg-transparent cursor-pointer">
-            </div>
-            <div>
-              <label class="block text-sm font-semibold mb-2">Resolution (px)</label>
-              <input type="number" id="size" value="300" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none">
-            </div>
-          </div>
+<div class="grid lg:grid-cols-2 gap-12">
 
-          <button id="generate" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-4 rounded-xl transition-all transform hover:scale-[1.02] active:scale-95">
-            Generate Master QR
-          </button>
-        </div>
-      </div>
+<!-- INPUT -->
+<div class="glass-ui p-8 rounded-[2.5rem]">
+<label class="text-xs font-bold text-slate-400 uppercase">Input Text / URL</label>
+<textarea id="dataInput" class="w-full h-40 bg-slate-900 mt-3 rounded-xl p-4 outline-none" placeholder="Paste text or link"></textarea>
+<div id="charCount" class="text-right text-xs text-slate-500 mt-1">0 / 4296</div>
 
-      <!-- Preview Section -->
-      <div class="glass-card p-8 rounded-3xl flex flex-col items-center justify-center text-center">
-        <div id="qrcode" class="bg-white p-4 rounded-2xl mb-6 min-w-[200px] min-h-[200px] flex items-center justify-center text-slate-900 font-bold">
-          QR Preview Here
-        </div>
-        
-        <div class="flex flex-wrap gap-4 justify-center">
-          <button id="download" class="bg-slate-700 hover:bg-slate-600 px-6 py-2 rounded-lg text-sm font-semibold">Download PNG</button>
-          <button id="clear" class="bg-red-500/10 text-red-400 hover:bg-red-500/20 px-6 py-2 rounded-lg text-sm font-semibold">Reset</button>
-        </div>
-      </div>
-    </main>
+<div class="grid grid-cols-2 gap-6 mt-6">
+<select id="eccLevel" class="bg-slate-900 p-3 rounded-xl">
+<option value="L">Low (Max Data)</option>
+<option value="M" selected>Medium</option>
+<option value="Q">Quartile</option>
+<option value="H">High (Safe)</option>
+</select>
 
-    <!-- Content for SEO (Traffic isi se ayega) -->
-    <section class="mt-20 prose prose-invert max-w-none">
-      <h2 class="text-3xl font-bold mb-6 text-cyan-400">Why use our QR Code Generator?</h2>
-      <div class="grid md:grid-cols-3 gap-8 text-slate-400">
-        <div class="p-6 bg-slate-800/50 rounded-2xl">
-          <h3 class="text-white text-xl mb-2">No Tracking</h3>
-          <p>We don't store your data or track your QR codes. Everything is generated in your browser.</p>
-        </div>
-        <div class="p-6 bg-slate-800/50 rounded-2xl">
-          <h3 class="text-white text-xl mb-2">High Quality</h3>
-          <p>Download QR codes in high resolution up to 2000px, perfect for print and digital media.</p>
-        </div>
-        <div class="p-6 bg-slate-800/50 rounded-2xl">
-          <h3 class="text-white text-xl mb-2">Custom Designs</h3>
-          <p>Change colors and types instantly to match your brand identity.</p>
-        </div>
-      </div>
-    </section>
+<input type="color" id="qrColor" value="#000000" class="h-11 rounded-xl">
+</div>
 
-    <footer class="mt-20 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-      &copy; 2025 QR Master Pro. All Rights Reserved. | Optimized for Search Engines.
-    </footer>
-  </div>
+<button onclick="generateQR()" class="w-full mt-6 py-4 bg-gradient-to-r from-cyan-400 to-blue-600 font-black rounded-xl text-black">
+Generate QR Code
+</button>
+</div>
 
-  <script src="cdnjs.cloudflare.com"></script>
-  <script>
-    // Logic updated for better performance
-    const typeEl = document.getElementById('type');
-    const payloadEl = document.getElementById('payload');
-    const qrcodeEl = document.getElementById('qrcode');
-    const generateBtn = document.getElementById('generate');
+<!-- OUTPUT -->
+<div class="glass-ui p-8 rounded-[2.5rem] flex flex-col items-center justify-center">
+<div id="qrOutput" class="text-center text-slate-500 italic">Ready to generate…</div>
 
-    typeEl.addEventListener('change', () => {
-        const labels = { url: 'Website URL', text: 'Any Text', phone: 'Phone Number', sms: 'SMS Data', email: 'Email Data', wifi: 'WiFi (SSID|Password)' };
-        document.getElementById('payload-label').textContent = labels[typeEl.value];
-    });
+<button id="downloadBtn" onclick="downloadQR()" class="hidden mt-6 bg-white text-black px-6 py-3 rounded-xl font-bold">
+Download PNG
+</button>
+</div>
 
-    generateBtn.onclick = () => {
-      const val = payloadEl.value.trim();
-      if(!val) return alert("Please enter data");
-      
-      qrcodeEl.innerHTML = "";
-      new QRCode(qrcodeEl, {
-        text: val,
-        width: parseInt(document.getElementById('size').value),
-        height: parseInt(document.getElementById('size').value),
-        colorDark: document.getElementById('color').value,
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-    };
+</div>
+</div>
 
-    document.getElementById('download').onclick = () => {
-        const img = qrcodeEl.querySelector('img');
-        if(!img) return alert("Generate QR first");
-        const link = document.createElement('a');
-        link.download = 'master-qr.png';
-        link.href = img.src;
-        link.click();
-    };
+<script>
+const input = document.getElementById("dataInput");
+const counter = document.getElementById("charCount");
 
-    document.getElementById('clear').onclick = () => { location.reload(); };
-  </script>
+input.oninput = () => {
+counter.textContent = `${input.value.length} / 4296`;
+};
+
+function generateQR(){
+const text = input.value.trim();
+if(!text) return alert("Please enter text or URL");
+
+if(text.length > 4296){
+alert("Text too long. Reduce characters or use URL shortener.");
+return;
+}
+
+const ecc = document.getElementById("eccLevel").value;
+const color = document.getElementById("qrColor").value;
+
+const qr = qrcode(0, ecc);
+qr.addData(text);
+qr.make();
+
+const size = 8;
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+
+const modules = qr.getModuleCount();
+canvas.width = canvas.height = modules * size;
+
+for(let r=0;r<modules;r++){
+for(let c=0;c<modules;c++){
+ctx.fillStyle = qr.isDark(r,c) ? color : "#ffffff";
+ctx.fillRect(c*size, r*size, size, size);
+}
+}
+
+const output = document.getElementById("qrOutput");
+output.innerHTML = "";
+output.appendChild(canvas);
+
+document.getElementById("downloadBtn").classList.remove("hidden");
+}
+
+function downloadQR(){
+const canvas = document.querySelector("#qrOutput canvas");
+const link = document.createElement("a");
+link.download = `QR_CODE_${Date.now()}.png`;
+link.href = canvas.toDataURL();
+link.click();
+}
+</script>
+
 </body>
 </html>
