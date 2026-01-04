@@ -3,121 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Free QR Code Generator Online | QR Master Pro 2025</title>
-<meta name="description" content="Generate QR codes online for free. Create QR codes for URLs, text and more. Download high quality QR codes instantly.">
+<title>QR Master Ultimate 2026</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- ✅ WORKING QR CODE LIBRARY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-body { background:#030712; color:#f8fafc; font-family:Inter,system-ui }
-.glass-ui{background:rgba(30,41,59,.5);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1)}
-#qrOutput canvas{margin:auto;border-radius:16px;box-shadow:0 25px 50px -12px rgba(0,0,0,.6)}
+body{background:#f8fafc;font-family:Inter,sans-serif}
+.card{background:#fff;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.input{width:100%;padding:12px;border:1.5px solid #e2e8f0;border-radius:12px}
+.input:focus{border-color:#4f46e5;outline:none}
+#qrcode img{margin:auto;border-radius:14px}
 </style>
 </head>
 
-<body class="min-h-screen py-12 px-4">
+<body class="p-6">
 
-<div class="max-w-5xl mx-auto">
+<div class="max-w-6xl mx-auto">
+<h1 class="text-3xl font-bold text-center">QR Master Ultimate 2026</h1>
+<p class="text-center text-slate-500 mb-10">
+Generate QR Codes + Discover Free Online Tools
+</p>
 
-<header class="text-center mb-16">
-<h1 class="text-5xl font-black bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-Free QR Code Generator
-</h1>
-<p class="text-slate-400 mt-4">Unlimited • No Signup • High Quality</p>
-</header>
-
-<div class="grid lg:grid-cols-2 gap-12">
+<div class="grid md:grid-cols-2 gap-8">
 
 <!-- INPUT -->
-<div class="glass-ui p-8 rounded-[2.5rem]">
-<label class="text-xs font-bold text-slate-400 uppercase">Input Text / URL</label>
-<textarea id="dataInput" class="w-full h-40 bg-slate-900 mt-3 rounded-xl p-4 outline-none" placeholder="Paste text or link"></textarea>
-<div id="charCount" class="text-right text-xs text-slate-500 mt-1">0 / 4296</div>
-
-<div class="grid grid-cols-2 gap-6 mt-6">
-<select id="eccLevel" class="bg-slate-900 p-3 rounded-xl">
-<option value="L">Low (Max Data)</option>
-<option value="M" selected>Medium</option>
-<option value="Q">Quartile</option>
-<option value="H">High (Safe)</option>
+<div class="card p-6 space-y-4">
+<select id="type" class="input font-semibold" onchange="updateUI()">
+<option value="url">Website / PDF / Link</option>
+<option value="text">Plain Text</option>
+<option value="whatsapp">WhatsApp</option>
+<option value="wifi">WiFi</option>
+<option value="vcard">Business Card</option>
+<option value="bulk">Bulk QR</option>
 </select>
 
-<input type="color" id="qrColor" value="#000000" class="h-11 rounded-xl">
-</div>
+<div id="fields"></div>
 
-<button onclick="generateQR()" class="w-full mt-6 py-4 bg-gradient-to-r from-cyan-400 to-blue-600 font-black rounded-xl text-black">
+<label class="text-sm font-semibold">QR Color</label>
+<input type="color" id="color" value="#000000">
+
+<label class="text-sm font-semibold">Center Logo (optional)</label>
+<input type="file" id="logo" accept="image/*">
+
+<button onclick="generate()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">
 Generate QR Code
 </button>
 </div>
 
 <!-- OUTPUT -->
-<div class="glass-ui p-8 rounded-[2.5rem] flex flex-col items-center justify-center">
-<div id="qrOutput" class="text-center text-slate-500 italic">Ready to generate…</div>
+<div class="card p-6 text-center">
+<div id="qrcode" class="mb-4">
+<div class="p-14 border-2 border-dashed rounded-xl text-slate-400">
+QR Preview
+</div>
+</div>
 
-<button id="downloadBtn" onclick="downloadQR()" class="hidden mt-6 bg-white text-black px-6 py-3 rounded-xl font-bold">
-Download PNG
-</button>
+<div class="grid grid-cols-2 gap-2">
+<button onclick="downloadPNG()" class="bg-black text-white py-2 rounded-xl">Download PNG</button>
+<button onclick="downloadPDF()" class="bg-slate-900 text-white py-2 rounded-xl">Download PDF</button>
+</div>
 </div>
 
 </div>
+
+<!-- FREE TOOLS SECTION -->
+<div class="mt-20">
+<h2 class="text-2xl font-bold text-center mb-2">🎁 More Free Websites You Can Visit</h2>
+<p class="text-center text-slate-500 mb-10">
+Click any tool below to open instantly
+</p>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<a href="https://invoicegenerator.free.nf/" target="_blank" class="card p-6 hover:scale-105 transition">
+<h3 class="text-lg font-bold">🧾 Invoice Generator</h3>
+<p class="text-sm text-slate-500 mt-2">
+Create professional invoices online. Perfect for freelancers & businesses.
+</p>
+<p class="mt-3 text-indigo-600 font-semibold">Visit Website →</p>
+</a>
+
+<a href="https://propertyconverter.free.nf/" target="_blank" class="card p-6 hover:scale-105 transition">
+<h3 class="text-lg font-bold">🏠 Property Converter</h3>
+<p class="text-sm text-slate-500 mt-2">
+Convert Marla, Kanal, Sq Ft and more with accuracy.
+</p>
+<p class="mt-3 text-indigo-600 font-semibold">Visit Website →</p>
+</a>
+
+<a href="https://strongpasswordgenrator.great-site.net/" target="_blank" class="card p-6 hover:scale-105 transition">
+<h3 class="text-lg font-bold">🔐 Password Generator</h3>
+<p class="text-sm text-slate-500 mt-2">
+Generate strong and secure passwords instantly.
+</p>
+<p class="mt-3 text-indigo-600 font-semibold">Visit Website →</p>
+</a>
+
+<a href="https://sajidsaj.github.io/calculator-site/" target="_blank" class="card p-6 hover:scale-105 transition">
+<h3 class="text-lg font-bold">🧮 Smart Calculator</h3>
+<p class="text-sm text-slate-500 mt-2">
+Fast & simple calculator for daily use on any device.
+</p>
+<p class="mt-3 text-indigo-600 font-semibold">Visit Website →</p>
+</a>
+
+<a href="https://caculator.free.nf/" target="_blank" class="card p-6 hover:scale-105 transition">
+<h3 class="text-lg font-bold">📊 Easy Calculator</h3>
+<p class="text-sm text-slate-500 mt-2">
+Quick calculations for students, shopkeepers & offices.
+</p>
+<p class="mt-3 text-indigo-600 font-semibold">Visit Website →</p>
+</a>
+
+</div>
+</div>
+
 </div>
 
 <script>
-const input = document.getElementById("dataInput");
-const counter = document.getElementById("charCount");
-
-input.oninput = () => {
-counter.textContent = `${input.value.length} / 4296`;
-};
-
-function generateQR(){
-const text = input.value.trim();
-if(!text) return alert("Please enter text or URL");
-
-if(text.length > 4296){
-alert("Text too long. Reduce characters or use URL shortener.");
-return;
+function updateUI(){
+const t=document.getElementById("type").value;
+let h="";
+if(t==="url") h=`<input id="f1" class="input" placeholder="https://example.com">`;
+if(t==="text") h=`<textarea id="f1" class="input h-24"></textarea>`;
+if(t==="whatsapp") h=`<input id="f1" class="input mb-2" placeholder="923001234567"><textarea id="f2" class="input h-20"></textarea>`;
+if(t==="wifi") h=`<input id="f1" class="input mb-2" placeholder="WiFi Name"><input id="f2" class="input" placeholder="Password">`;
+if(t==="vcard") h=`<input id="f1" class="input mb-2" placeholder="Name"><input id="f2" class="input mb-2" placeholder="Phone"><input id="f3" class="input" placeholder="Email">`;
+if(t==="bulk") h=`<textarea id="f1" class="input h-32" placeholder="One link per line"></textarea>`;
+document.getElementById("fields").innerHTML=h;
 }
 
-const ecc = document.getElementById("eccLevel").value;
-const color = document.getElementById("qrColor").value;
+function generate(){
+const t=document.getElementById("type").value;
+const f1=document.getElementById("f1")?.value.trim();
+const f2=document.getElementById("f2")?.value.trim()||"";
+const f3=document.getElementById("f3")?.value.trim()||"";
+if(!f1)return alert("Please enter required data");
 
-const qr = qrcode(0, ecc);
-qr.addData(text);
-qr.make();
+let data="";
+if(t==="url"||t==="text") data=f1;
+if(t==="whatsapp") data=`https://wa.me/${f1}?text=${encodeURIComponent(f2)}`;
+if(t==="wifi") data=`WIFI:T:WPA;S:${f1};P:${f2};;`;
+if(t==="vcard") data=`BEGIN:VCARD\nVERSION:3.0\nFN:${f1}\nTEL:${f2}\nEMAIL:${f3}\nEND:VCARD`;
 
-const size = 8;
-const canvas = document.createElement("canvas");
-const ctx = canvas.getContext("2d");
-
-const modules = qr.getModuleCount();
-canvas.width = canvas.height = modules * size;
-
-for(let r=0;r<modules;r++){
-for(let c=0;c<modules;c++){
-ctx.fillStyle = qr.isDark(r,c) ? color : "#ffffff";
-ctx.fillRect(c*size, r*size, size, size);
-}
+document.getElementById("qrcode").innerHTML="";
+new QRCode("qrcode",{text:data,width:280,height:280,correctLevel:QRCode.CorrectLevel.H});
 }
 
-const output = document.getElementById("qrOutput");
-output.innerHTML = "";
-output.appendChild(canvas);
-
-document.getElementById("downloadBtn").classList.remove("hidden");
+function downloadPNG(){
+const img=document.querySelector("#qrcode img");
+if(!img)return;
+const a=document.createElement("a");
+a.href=img.src;a.download="QR_Code.png";a.click();
 }
 
-function downloadQR(){
-const canvas = document.querySelector("#qrOutput canvas");
-const link = document.createElement("a");
-link.download = `QR_CODE_${Date.now()}.png`;
-link.href = canvas.toDataURL();
-link.click();
+function downloadPDF(){
+const {jsPDF}=window.jspdf;
+const pdf=new jsPDF();
+const img=document.querySelector("#qrcode img");
+pdf.addImage(img.src,"PNG",40,40,130,130);
+pdf.save("QR_Code.pdf");
 }
+
+window.onload=updateUI;
 </script>
 
 </body>
